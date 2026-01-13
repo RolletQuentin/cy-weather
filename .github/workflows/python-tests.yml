@@ -33,5 +33,5 @@ jobs:
         run: uv sync --frozen --dev
 
       - name: Run tests
-        # Exécute pytest sur le dossier tests situé au-dessus
-        run: uv run pytest ../tests
+        # Définit PYTHONPATH pour inclure ./api afin que les imports fonctionnent
+        run: PYTHONPATH=./api uv run pytest ../tests -v --cov=src --cov-report=term-missing
