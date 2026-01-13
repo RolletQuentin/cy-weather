@@ -3,7 +3,7 @@ import httpx
 from datetime import datetime
 from httpx import AsyncClient, ASGITransport
 from unittest.mock import AsyncMock, patch
-from main import app
+from api.main import app
 
 # 1. Mock pour WeatherResponse (Météo actuelle)
 MOCK_WEATHER_RESPONSE = {
