@@ -12,3 +12,8 @@ dependencies = [
     "prometheus-fastapi-instrumentator>=7.1.0",
     "prometheus-client>=0.23.1",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["../tests"]
+pythonpath = ["."]
+asyncio_mode = "strict"

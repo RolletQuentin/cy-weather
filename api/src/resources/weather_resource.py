@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 from src.models.Weather import WeatherRequest, WeatherResponse, ForecastResponse
 from src.services.weather_service import weather_service
-from src.metrics import weather_current_searches, weather_forecast_searches  # ← Ajoute
+from src.metrics import weather_current_searches, weather_forecast_searches
 import httpx
 
 router = APIRouter(prefix="/weather", tags=["Weather"])
