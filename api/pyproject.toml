@@ -21,6 +21,6 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]        # <-- corrige le chemin
+testpaths = ["../tests"]        # <-- corrige le chemin
 pythonpath = ["."]
 asyncio_mode = "strict"
