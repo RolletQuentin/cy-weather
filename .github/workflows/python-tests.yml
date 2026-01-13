@@ -1,0 +1,37 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        # On spécifie que les commandes s'exécutent dans le dossier api
+        working-directory: cy-weather/api
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          # Utilise la version de python spécifiée dans votre pyproject.toml
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install dependencies
+        # Installe les dépendances listées dans votre pyproject.toml
+        run: uv sync --frozen
+
+      - name: Run tests
+        # Exécute pytest sur le dossier tests situé au-dessus
+        run: uv run pytest ../tests
