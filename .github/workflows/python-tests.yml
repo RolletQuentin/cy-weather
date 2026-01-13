@@ -13,7 +13,7 @@ jobs:
     defaults:
       run:
         # On spécifie que les commandes s'exécutent dans le dossier api
-        working-directory: cy-weather/api
+        working-directory: api
 
     steps:
       - name: Checkout code
