@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from src.resources.weather_resource import router as weather_router
 from prometheus_fastapi_instrumentator import Instrumentator
+from fastapi.middleware.cors import CORSMiddleware
 
 tags_metadata = [
     {
@@ -26,14 +27,20 @@ app = FastAPI(
 
 Instrumentator().instrument(app).expose(app)
 
-origins = ["*"]
+# Liste explicite des domaines autorisés
+origins = [
+    "https://lategardener.github.io",
+    "https://lategardener.github.io/cy-weather",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Autorise GET, POST, etc.
+    allow_headers=["*"],  # Autorise tous les headers
 )
 
 router = APIRouter(
